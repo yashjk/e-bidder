@@ -16,7 +16,7 @@ if (env.NODE_ENV === "production") {
 } else {
   if(!global.database) {
     pg = postgres();
-    database = drizzle(pg, { schema });
+    global.database = drizzle(pg, { schema });
   }
   database = global.database;
 };

@@ -4,13 +4,13 @@ import { PostgresJsDatabase, drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 declare global {
-  var database: PostgresJsDatabse<typeof schema> | undefined;
+  var database: PostgresJsDatabase<typeof schema> | undefined;
 };
 
-let database: PostgresJsDatabse<typeof schema>;
+let database: PostgresJsDatabase<typeof schema>;
 let pg: ReturnType<typeof postgres>;
 
-if (env.Node_ENV === "production") {
+if (env.NODE_ENV === "production") {
   pg = postgres(env.DATABASE_URL);
   database = drizzle(pg, { schema });
 } else {
